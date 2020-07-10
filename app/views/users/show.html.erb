@@ -1,0 +1,24 @@
+<div>
+  <h4 class="ui center aligned medium icon header">
+    <i class="circular user blue icon"></i>
+      My Account
+  </h4>
+  <div class="ui centered card raised">
+    <%= link_to edit_user_path(@user), class: "content" do %>
+      <div class="header center aligned">
+        <%= @user.username %>
+      </div>
+      <div class="description">
+        <% if @user.description.nil? %>
+          <p>
+            <em>No bio :(</em>
+          </p>
+        <% else %>
+          <p>
+            <%= simple_format(@user.description) %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

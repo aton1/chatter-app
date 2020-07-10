@@ -1,22 +1,22 @@
 <div class="ui grey inverted menu">
   <div class="ui container">
-    <a class="item">
-      Chatter
-    </a>
-    <a class="item">
-      Messages
-    </a>
+    <%= link_to "Chatter", root_path, class: "item" %>
     <div class="right menu">
-      <div class="ui dropdown item">
-        Account <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item">Logout</a>
-          <a class="item">Login</a>
+      <%= link_to "Chatters", users_path, class: "item" %>
+      <% if logged_in? && current_user %>
+        <div class="ui dropdown item">
+          Account <i class="dropdown icon"></i>
+          <div class="menu">
+            <%= link_to "My Account", user_path(current_user), class: "item" %>
+            <%= link_to "Logout", logout_path, class: "item", method: :delete %>
+          </div>
         </div>
-      </div>
-      <div class="item">
-          <div class="ui primary button">Sign Up</div>
-      </div>
+      <% else %>
+        <%= link_to "Login", login_path, class: "item" %>
+        <div class="item">
+          <%= link_to "Get Started", sign_up_path, class: "ui primary button" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

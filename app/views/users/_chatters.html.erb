@@ -1,0 +1,27 @@
+<div class="ui cards raised">
+  <% @users.each do |user| %>
+    <div class="card">
+      <div class="content">
+        <div class="header">
+          <%= user.username %>
+        </div>
+        <div class="description">
+          <% if user.description.nil? %>
+            <em>No bio :(</em>
+          <% else %>
+            <%= simple_format(user.description) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          Joined in
+          <%= user.created_at.year %>
+        </span>
+        <span class="left floated">
+          <%= link_to "View", user_path(user), class: "ui basic blue tiny button" %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>

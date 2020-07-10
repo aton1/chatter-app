@@ -18,5 +18,9 @@ require("semantic-ui-sass")
 
 // enable dropdown for semantic-ui
 $(document).on("turbolinks:load", () => {
-  $(".ui.dropdown").dropdown()
+  $(".ui.dropdown").dropdown();
+  // enable flash messages to be closed
+  $(".close.icon").click(function (){
+    $(this).parent().hide();
+  });
 });

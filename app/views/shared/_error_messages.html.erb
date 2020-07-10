@@ -1,0 +1,10 @@
+<% if obj.errors.any? %>
+  <div class="ui negative message">
+    <ul>
+      <% obj.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <i class="close icon"></i>
+  </div>
+<% end %>
