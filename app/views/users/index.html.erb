@@ -4,4 +4,8 @@
       Chatters
   </h4>
 </div>
-<%= render "chatters" %>
+<div class="ui three column grid">
+  <% @users.each do |user| %>
+    <%= render "chatters", obj: user %>
+  <% end %>
+</div>

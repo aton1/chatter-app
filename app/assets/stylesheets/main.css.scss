@@ -1,11 +1,19 @@
 @import 'semantic-ui';
 
+.card-text {
+  word-wrap: break-word;
+}
+
 .fixed {
   height: 450px;
 }
 
 .flash-message {
   margin-bottom: 25px;
+}
+
+.index-card {
+  height: 140px;
 }
 
 .sign-up {

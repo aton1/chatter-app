@@ -1,27 +1,31 @@
-<div class="ui cards raised">
-  <% @users.each do |user| %>
-    <div class="card">
-      <div class="content">
-        <div class="header">
-          <%= user.username %>
-        </div>
-        <div class="description">
-          <% if user.description.nil? %>
-            <em>No bio :(</em>
-          <% else %>
-            <%= simple_format(user.description) %>
-          <% end %>
-        </div>
+<div class="<%= "eight wide" if action_name == "show" %> column">
+  <div class="ui fluid raised card card-text <%= "index-card" if action_name == "index" %>">
+    <div class="content">
+      <div class="header">
+        <%= obj.username %>
       </div>
-      <div class="extra content">
-        <span class="right floated">
-          Joined in
-          <%= user.created_at.year %>
-        </span>
-        <span class="left floated">
-          <%= link_to "View", user_path(user), class: "ui basic blue tiny button" %>
-        </span>
+      <div class="description">
+        <% if obj.description.nil? %>
+          <em>No bio :(</em>
+        <% elsif action_name == "index" %>
+          <%= truncate(obj.description, length: 100) %>
+        <% else %>
+          <%= simple_format(obj.description) %>
+        <% end %>
       </div>
     </div>
-  <% end %>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in
+        <%= obj.created_at.year %>
+      </span>
+      <span class="left floated">
+        <% if action_name == "index" %>
+          <%= link_to "View", user_path(obj), class: "ui basic blue tiny button" %>
+        <% else %>
+          <%= link_to "Edit", edit_user_path(obj), class: "ui basic blue tiny button" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
 </div>

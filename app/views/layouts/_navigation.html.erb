@@ -1,6 +1,9 @@
 <div class="ui grey inverted menu">
   <div class="ui container">
-    <%= link_to "Chatter", root_path, class: "item" %>
+    <%= link_to root_path, class: "item" do %>
+      <i class="ui wechat icon"></i>
+      Chatter
+    <% end %>
     <div class="right menu">
       <%= link_to "Chatters", users_path, class: "item" %>
       <% if logged_in? && current_user %>
