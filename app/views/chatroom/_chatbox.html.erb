@@ -1,34 +1,20 @@
 <div class="ui fluid raised card fixed">
   <div class="content">
     <div class="ui feed">
-      <div class="event">
-        <div class="content">
-          <div class="summary">
-            <em>Elliot Fu</em>: Test message
-          </div>
-        </div>
-      </div>
+      <% @messages.each do |message| %>
         <div class="event">
           <div class="content">
             <div class="summary">
-              <em>Stevie Feliciano</em>: Another test message
+              <em>
+                <%= message.user.username %> :
+              </em>
+              <span class="chat-message-text">
+                <%= message.body %>
+              </span>
             </div>
           </div>
         </div>
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <em>Ok Oh</em>: Another test message
-            </div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <em>Beverly Hills</em>: Another test message
-            </div>
-          </div>
-        </div>
+      <% end %>
       </div>
     </div>
     <div class="extra content">

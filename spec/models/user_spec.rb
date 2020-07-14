@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:chatter) { create(:user) }
   let(:invalid_chatter) { build(:user) }
+  let(:messages) { create_list(:message, 3, user: chatter) }
 
   it "passes all validations" do
     expect(chatter).to be_valid
@@ -60,6 +61,23 @@ RSpec.describe User, type: :model do
       invalid_chatter.description *= 300
 
       expect(invalid_chatter).not_to be_valid
+    end
+  end
+
+  it "has many messages" do
+    messages.all? do |message|
+      expect(message.user_id).to eq(chatter.id)
+    end
+
+    expect(User.reflect_on_association(:messages).macro).to eq(:has_many)
+    expect(chatter).to respond_to(:messages)
+  end
+
+  it "destroys all messages belonging to a user" do
+    messages.all? do |message|
+      chatter.destroy
+
+      expect(chatter.messages.count).to be(0)
     end
   end
 end

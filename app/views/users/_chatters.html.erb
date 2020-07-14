@@ -23,7 +23,7 @@
         <% if action_name == "index" %>
           <%= link_to "View", user_path(obj), class: "ui basic blue tiny button" %>
         <% else %>
-          <%= link_to "Edit", edit_user_path(obj), class: "ui basic blue tiny button" %>
+          <%= link_to "Edit", edit_user_path(obj), class: "ui basic blue tiny button" if logged_in? && obj == current_user %>
         <% end %>
       </span>
     </div>

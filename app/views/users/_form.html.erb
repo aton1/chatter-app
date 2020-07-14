@@ -15,7 +15,7 @@
         <%= f.password_field :password %>
       </div>
     </div>
-    <% if logged_in? && current_user %>
+    <% if logged_in? %>
       <div class="field">
         <%= f.label :description, "Biography" %>
         <%= f.text_area :description, rows: 3 %>

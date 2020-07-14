@@ -4,7 +4,7 @@
       Chatters
   </h4>
 </div>
-<div class="ui three column grid">
+<div class="ui <%= "centered" if @users.count == 1 %> three column grid">
   <% @users.each do |user| %>
     <%= render "chatters", obj: user %>
   <% end %>

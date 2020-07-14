@@ -4,6 +4,10 @@
   word-wrap: break-word;
 }
 
+.chat-message-text {
+  font-weight: 400;
+}
+
 .fixed {
   height: 450px;
 }
@@ -21,7 +25,7 @@
 }
 
 .ui.button {
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .ui.menu {

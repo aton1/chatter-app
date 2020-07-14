@@ -6,7 +6,7 @@
     <% end %>
     <div class="right menu">
       <%= link_to "Chatters", users_path, class: "item" %>
-      <% if logged_in? && current_user %>
+      <% if logged_in? %>
         <div class="ui dropdown item">
           Account <i class="dropdown icon"></i>
           <div class="menu">
