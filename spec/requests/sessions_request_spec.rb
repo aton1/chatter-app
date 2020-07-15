@@ -5,6 +5,12 @@ RSpec.describe "Sessions", type: :request do
   let(:invalid_chatter) { build(:user) }
 
   context "when logging in" do
+    it "displays login page" do
+      get login_path
+  
+      expect(response).to be_successful
+    end
+
     it "user logs in successfully" do
       sign_in_as(chatter)
 
@@ -19,6 +25,14 @@ RSpec.describe "Sessions", type: :request do
       expect(flash[:alert]).to include("Username or password entered is incorrect")
       expect(response.body).to include("Login")
     end
+
+    it "user can't login again" do
+      sign_in_as(chatter)
+      get login_path
+
+      expect(flash[:alert]).to include("You are already logged in")
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   context "when logging out" do
@@ -27,7 +41,7 @@ RSpec.describe "Sessions", type: :request do
 
       expect(session[:user_id]).to be_nil
       expect(flash[:notice]).to include("Logged out successfully")
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(login_path)
     end
   end
 end

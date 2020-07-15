@@ -20,7 +20,7 @@ require("semantic-ui-sass")
 $(document).on("turbolinks:load", () => {
   $(".ui.dropdown").dropdown();
   // enable flash messages to be closed
-  $(".close.icon").click(function (){
-    $(this).parent().hide();
+  $(".message .close").on("click", function() {
+    $(this).closest(".message").transition("fade");
   });
 });

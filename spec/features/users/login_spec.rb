@@ -12,6 +12,12 @@ RSpec.feature "Login" do
     scenario "signs in as a chatter user" do
       expect(page).to have_content("Logged in successfully")
     end
+
+    scenario "tries to sign in again" do
+      visit "/login"
+
+      expect(page).to have_content("You are already logged in")
+    end
   end
 
   scenario "signs in with incorrect credentials" do

@@ -15,7 +15,6 @@ RSpec.feature "Delete Account" do
     scenario "deletes their account" do
       visit "/users/#{chatter.id}/edit"
       click_link "Delete"
-
       expect(page).to have_content("Account was successfully deleted")
     end
   end

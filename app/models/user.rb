@@ -17,5 +17,8 @@ class User < ApplicationRecord
   validates :description,
             length: { maximum: 250 }
 
+  validates :password,
+            presence: true, on: :create
+
   has_secure_password
 end

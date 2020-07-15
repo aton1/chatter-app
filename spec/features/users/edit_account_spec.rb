@@ -15,7 +15,7 @@ RSpec.feature "Edit Account" do
     scenario "edits their account" do
       visit "/users/#{chatter.id}/edit"
       fill_in "Username", with: "Updated - #{chatter.username}"
-      click_button "Submit"
+      click_on "Submit"
 
       expect(page).to have_content("Updated - #{chatter.username}")
     end

@@ -24,12 +24,12 @@
     <div>
       <%= f.submit(@user.new_record? ? "Sign Up" : "Submit", class: "ui blue button") %>
       <% if logged_in? && !@user.new_record? %>
-        <%= link_to "Delete Account", user_path(@user), method: :delete, class: "ui red button right floated", data: { confirm: "Are you sure you want to delete account?" } %>
+        <%= link_to "Delete", user_path(@user), method: :delete, class: "ui red button right floated", data: { confirm: "Are you sure you want to delete account?" } %>
       <% end %>
       <% if action_name == "edit" %>
         <%= link_to "Cancel", user_path(@user), class: "ui grey button" %>
       <% else %>
-        <%= link_to "Cancel", root_path, class: "ui grey button" %>
+        <%= link_to "Cancel", login_path, class: "ui grey button" %>
       <% end %>
     </div>
   <% end %>

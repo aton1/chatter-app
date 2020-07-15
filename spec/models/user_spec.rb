@@ -80,4 +80,10 @@ RSpec.describe User, type: :model do
       expect(chatter.messages.count).to be(0)
     end
   end
+
+  it "password can't be blank on create" do
+    invalid_chatter.password = nil
+
+    expect(invalid_chatter).not_to be_valid
+  end
 end

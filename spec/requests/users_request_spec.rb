@@ -73,7 +73,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "can only update user's own info" do
-      patch user_path(chatter2), params: { user: { username: "upd_username" } }
+      get edit_user_path(chatter2)
 
       expect(flash[:alert]).to include("You can only make changes to your own account")
     end
@@ -93,7 +93,7 @@ RSpec.describe "Users", type: :request do
     it "deletes user account" do
       delete user_path(chatter)
 
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(login_path)
     end
 
     it "can only delete user's own account" do
