@@ -7,5 +7,9 @@ module Helpers
     def sign_out_as(user)
       delete logout_path
     end
+
+    def create_new_message(message)
+      post message_path, params: { message: { body: message.body} }
+    end
   end
 end

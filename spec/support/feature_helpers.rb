@@ -18,5 +18,11 @@ module Helpers
     def sign_out
       click_link "Logout"
     end
+
+    def post_new_message(message)
+      visit root_path
+      fill_in "message_body", with: message.body
+      click_button "button"
+    end
   end
 end

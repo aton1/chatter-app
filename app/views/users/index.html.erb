@@ -3,9 +3,10 @@
     <i class="circular users blue icon"></i>
       Chatters
   </h4>
-</div>
-<div class="ui <%= "centered" if @users.count == 1 %> three column grid">
-  <% @users.each do |user| %>
-    <%= render "chatters", obj: user %>
-  <% end %>
+  <div class="ui <%= "centered" if @users.count == 1 %> three column grid">
+    <% @users.each do |user| %>
+      <%= render "chatters", obj: user %>
+    <% end %>
+  </div>
+  <%= render "pagination" if @users.count > 9 %>
 </div>

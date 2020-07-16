@@ -5,14 +5,16 @@
     </div>
   </div>
     <div class="extra content">
-      <form class="ui reply form">
+      <%= form_with(model: @message, url: message_path, local: true, class: "ui reply form") do |f| %>
         <div class="field">
           <div class="ui fluid icon input">
-            <input type="text" placeholder="New message...">
-            <i class="bordered inverted blue edit icon"></i>
+            <%= f.text_field :body, placeholder: "New message.." %>
+            <%= f.button class: "chat-submit-btn ui blue button" do %>
+              <i class="bordered inverted blue edit icon chat-submit-icon"></i>
+            <% end %>
           </div>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>
