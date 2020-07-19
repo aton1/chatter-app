@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Messages", type: :request do
   let(:chatter) { create(:user) }
   let(:message) { build(:message, user: chatter) }
+  let(:broadcast) { ActionCable.server.broadcast("chatroom_channel", chat_message: message.body) }
 
   context "when chatter is logged in" do
     before do
@@ -11,7 +12,11 @@ RSpec.describe "Messages", type: :request do
     end
 
     it "creates message" do
-      expect(response).to redirect_to(root_path)
+      expect(response).to be_successful
+    end
+
+    it "broadcasts message" do
+      expect{ broadcast }.to have_broadcasted_to("chatroom_channel")
     end
   end
 

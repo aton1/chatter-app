@@ -23,4 +23,25 @@ $(document).on("turbolinks:load", () => {
   $(".message .close").on("click", function() {
     $(this).closest(".message").transition("fade");
   });
+  scrollToBottom();
 });
+
+scrollToBottom = () => {
+  const chatbox = document.getElementById("messages");
+  const messages = document.querySelectorAll(".summary");
+
+  if (messages.length > 0) {
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
+};
+
+submitMessage = () => {
+  const input = document.getElementById("chat-input");
+
+  input.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      return e.target.value = "";
+    }
+  });
+  input.value = "";
+};

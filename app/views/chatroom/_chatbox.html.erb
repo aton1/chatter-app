@@ -1,14 +1,20 @@
 <div class="ui fluid raised card fixed">
-  <div class="content">
-    <div class="ui feed">
-      <%= render @messages %>  
+  <div class="content" id="messages">
+    <div class="ui feed" id="chatroom-messages">
+      <% if @messages.count > 0 %>
+        <%= render @messages %> 
+      <% else %>
+        <em>
+          <%= "Welcome to Chatter..." %>
+        </em>
+      <% end %>
     </div>
   </div>
     <div class="extra content">
-      <%= form_with(model: @message, url: message_path, local: true, class: "ui reply form") do |f| %>
+      <%= form_with(model: @message, url: message_path, remote: true, class: "ui reply form") do |f| %>
         <div class="field">
           <div class="ui fluid icon input">
-            <%= f.text_field :body, placeholder: "New message.." %>
+            <%= f.text_field :body, placeholder: "New message..", id: "chat-input" %>
             <%= f.button class: "chat-submit-btn ui blue button" do %>
               <i class="bordered inverted blue edit icon chat-submit-icon"></i>
             <% end %>

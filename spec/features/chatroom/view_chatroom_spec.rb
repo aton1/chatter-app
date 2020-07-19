@@ -2,16 +2,28 @@ require 'rails_helper'
 
 RSpec.feature "View Chatroom" do
   let(:chatter) { create(:user) }
+  let(:message) { create(:message, user: chatter) }
+
+  before do
+    sign_in_as(chatter)
+  end
   
   scenario "displays chatroom after logging in" do
-    sign_in_as(chatter)
-
     expect(page).to have_css(".card")
   end
 
-  scenario "doesn't display chatroom if not logged in" do
-    visit "/"
+  scenario "displays welcome text if there are no messages" do
+    expect(page).to have_content("Welcome to Chatter...")
+  end
 
-    expect(page).to have_content("You must be logged in to do that")
+  scenario "displays message" do
+    post_new_message(message)
+
+    expect(page).to have_content(message.user.username)
+    expect(page).to have_content(message.body)
+  end
+
+  scenario "displays online users" do
+    expect(page).to have_content(chatter.username)
   end
 end

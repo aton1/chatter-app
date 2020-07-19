@@ -21,7 +21,7 @@ module Helpers
 
     def post_new_message(message)
       visit root_path
-      fill_in "message_body", with: message.body
+      fill_in "chat-input", with: message.body
       click_button "button"
     end
   end

@@ -23,6 +23,7 @@ RSpec.feature "Create New Message" do
   context "when not logged in as a chatter" do
     scenario "doesn't post new mesasge if not logged in" do
       visit root_path
+      post_new_message(message)
   
       expect(page).to have_content("You must be logged in to do that")
     end

@@ -2,12 +2,19 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:chatter) { create(:user) }
+  let(:chatters) { create_list(:user, 5, currently_logged_in: true) }
   let(:invalid_chatter) { build(:user) }
   let(:messages) { create_list(:message, 3, user: chatter) }
 
   it "passes all validations" do
     expect(chatter).to be_valid
     expect(User.count).to be(1)
+  end
+
+  it "displays online users" do
+    chatters
+
+    expect(User.display_online_users.count).to eq(5)
   end
 
   context "when entering an invalid username" do

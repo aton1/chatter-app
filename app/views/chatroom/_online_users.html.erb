@@ -1,17 +1,25 @@
 <div class="four wide column">
   <div class="ui fluid raised card fixed">
     <div class="content">
-      <div class="ui vertical menu">
-        <a class="item">
-          Home
-        </a>
-        <a class="item">
-          Messages
-        </a>
-        <a class="item">
-          Friends
-        </a>
-      </div>
+      <% if @users.count > 0 %>
+        <div class="ui secondary vertical menu">
+          <div class="item">
+            Online Chatters
+            <i class="users green icon"></i>
+          </div>
+          <hr/>
+          <% @users.each do |user| %>
+            <% if user.currently_logged_in? %>
+              <%= link_to user_path(user), class: "item" do %>
+                <%= user.username %>
+                <i class="user green icon"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No chatters online <i class="frown outline icon"></i></p>
+      <% end %>
     </div>
   </div>
 </div>

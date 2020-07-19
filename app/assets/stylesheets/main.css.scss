@@ -54,7 +54,7 @@
 
 .bordered.inverted.blue.edit.icon.chat-submit-icon {
   font-size: 1.05em;
-  padding-bottom: 19px !important;
+  padding-bottom: 23px !important;
   padding-left: 9px !important;
 }
 
@@ -68,6 +68,11 @@
 
 .index-card {
   height: 140px;
+}
+
+#messages {
+  height: 15em;
+  overflow: auto;
 }
 
 .sign-up {

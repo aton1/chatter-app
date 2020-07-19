@@ -22,12 +22,11 @@ RSpec.describe "Chatroom", type: :request do
         expect(response.body).to include(message.body)
       end
     end
-  end
 
-  it "doesn't display chatroom if user is not logged in" do
-    get root_path
+    it "displays online chatters" do
+      get root_path
 
-    expect(flash[:alert]).to include("You must be logged in to do that")
-    expect(response).to redirect_to(login_path)
+      expect(response.body).to include(chatter.username)
+    end
   end
 end

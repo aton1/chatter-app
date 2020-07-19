@@ -21,4 +21,6 @@ class User < ApplicationRecord
             presence: true, on: :create
 
   has_secure_password
+
+  scope :display_online_users, -> { where(currently_logged_in: true) }
 end
