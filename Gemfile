@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use for pagination
 gem 'will_paginate', '~> 3.1.0'
 gem 'semantic-ui-sass'
+gem 'redis'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
