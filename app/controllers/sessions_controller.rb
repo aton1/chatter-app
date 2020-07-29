@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      user.update(currently_logged_in: true)
+      user.toggle!(:active)
       flash[:notice] = "Logged in successfully"
       redirect_to root_path
     else
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    current_user.update(currently_logged_in: false)
+    !current_user.toggle!(:active)
     session[:user_id] = nil
     flash[:notice] = "Logged out successfully"
     redirect_to login_path

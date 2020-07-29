@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      active?
       flash[:notice] = "Welcome to Chatter, #{@user.username}!"
       redirect_to root_path
     else
@@ -63,5 +64,9 @@ class UsersController < ApplicationController
       flash[:alert] = "You can only make changes to your own account"
       redirect_to @user
     end
+  end
+
+  def active?
+    @user.toggle!(:active)
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
-  let(:chatter) { create(:user, currently_logged_in: true) }
+  let(:chatter) { create(:user, active: true) }
   let(:chatter2) { create(:user) }
   let(:invalid_chatter) { build(:user) }
 
@@ -15,7 +15,7 @@ RSpec.describe "Sessions", type: :request do
     it "user logs in successfully" do
       sign_in_as(chatter)
 
-      expect(chatter.currently_logged_in).to be_truthy
+      expect(chatter.active).to be_truthy
       expect(session[:user_id]).to eq(chatter.id)
       expect(flash[:notice]).to include("Logged in successfully")
       expect(response).to redirect_to(root_path)
@@ -42,7 +42,7 @@ RSpec.describe "Sessions", type: :request do
       sign_in_as(chatter2)
       sign_out_as(chatter2)
 
-      expect(chatter2.currently_logged_in).to be_falsey
+      expect(chatter2.active).to be_falsey
       expect(session[:user_id]).to be_nil
       expect(flash[:notice]).to include("Logged out successfully")
       expect(response).to redirect_to(login_path)

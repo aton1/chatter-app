@@ -22,5 +22,5 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  scope :display_online_users, -> { where(currently_logged_in: true) }
+  scope :display_online_users, -> { where(active: true) }
 end

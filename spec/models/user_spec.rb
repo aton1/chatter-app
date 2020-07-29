@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:chatter) { create(:user) }
-  let(:chatters) { create_list(:user, 5, currently_logged_in: true) }
+  let(:chatters) { create_list(:user, 5, active: true) }
   let(:invalid_chatter) { build(:user) }
   let(:messages) { create_list(:message, 3, user: chatter) }
 

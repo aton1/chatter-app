@@ -11,6 +11,7 @@ RSpec.feature "Sign Up" do
 
     scenario "signs up as a chatter user" do
       expect(page).to have_content("Welcome to Chatter, #{chatter.username}!")
+      expect(page).to have_css(".content", text: chatter.username)
     end
   end
 

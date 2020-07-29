@@ -9,7 +9,7 @@
           </div>
           <hr/>
           <% @users.each do |user| %>
-            <% if user.currently_logged_in? %>
+            <% if user.active? %>
               <%= link_to user_path(user), class: "item" do %>
                 <%= user.username %>
                 <i class="user green icon"></i>

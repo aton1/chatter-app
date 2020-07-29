@@ -11,6 +11,7 @@ RSpec.feature "Login" do
 
     scenario "signs in as a chatter user" do
       expect(page).to have_content("Logged in successfully")
+      expect(page).to have_css(".content", text: chatter.username)
     end
 
     scenario "tries to sign in again" do
