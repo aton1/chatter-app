@@ -3,5 +3,6 @@ class Message < ApplicationRecord
 
   validates :body, presence: true
 
-  scope :display_chat_feed, -> { order(:created_at).last(30) }
+  scope :filter_messages, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
+  scope :display_chat_feed, -> { filter_messages.order(:created_at).last(30) }
 end
