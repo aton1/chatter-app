@@ -3,7 +3,7 @@
     <i class="circular users blue icon"></i>
       Chatters
   </h4>
-  <div class="ui <%= "centered" if @users.count == 1 %> three column grid">
+  <div class="ui <%= "centered" if @users.count == 1 %> three column stackable grid">
     <% @users.each do |user| %>
       <%= render "chatters", obj: user %>
     <% end %>

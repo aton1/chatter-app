@@ -37,7 +37,7 @@
 }
 
 .apple_pagination a:hover, .apple_pagination a:focus {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .card-text {
@@ -75,6 +75,10 @@
   overflow: auto;
 }
 
+#online-users {
+  overflow: auto;
+}
+
 .sign-up {
   color: #ffff !important;
 }
@@ -89,4 +93,15 @@
 
 .ui.vertical.menu {
   width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  [class*="mobile hidden"],
+  [class*="tablet only"]:not(.mobile),
+  [class*="computer only"]:not(.mobile),
+  [class*="large monitor only"]:not(.mobile),
+  [class*="widescreen monitor only"]:not(.mobile),
+  [class*="or lower hidden"] {
+    display: none !important;
+  }
 }
